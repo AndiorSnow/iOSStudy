@@ -385,6 +385,8 @@ private func ControlFlow() {
     
 }
 
+
+// Test 1
 func Plalindrome() {
     let str = "asdfdsa"
     if (str == String(str.reversed())) {
@@ -394,7 +396,7 @@ func Plalindrome() {
     }
 }
 
-SumFilteredArray()
+//SumFilteredArray()
 func SumFilteredArray() {
     let someInts = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     var sortedInts = someInts.sorted()
@@ -403,3 +405,6 @@ func SumFilteredArray() {
     let sumFiltered = sortedInts.filter { $0 % 2 != 0 }.reduce(0, +)
     print (sumFiltered)
 }
+
+
+VehicleProgram()
