@@ -658,18 +658,30 @@ class Vehicle {
 
 class Car: Vehicle {
     var gear = 1
-    let color: CarColor
+    var size = CarSize()
     let power: PowerSource
     override var description: String {
-        return super.description + " in gear \(gear)" + " with color (r:\(color.red), g:\(color.green), b:\(color.blue))" + " and power source of \(power)"
+        return super.description + " in gear \(gear)" 
+        + " with size of length:\(size.length), width:\(size.width), height:\(size.height)"
+        + " and power source of \(power)"
     }
     override func getWheels(wheels: Int) {
         print ("Car has \(wheels) wheels.")
     }
-    init (color: CarColor, power: PowerSource) {
-        self.color = color
+    init (power: PowerSource) {
         self.power = power
     }
+}
+    
+struct CarSize {
+    var length = 0.0
+    var width = 0.0
+    var height = 0.0
+}
+
+
+enum PowerSource: CaseIterable {
+    case ICE, MHEV, HEV, REV, BEV, PHEV, FCEV
 }
 
 class AutomaticCar: Car {
@@ -679,28 +691,22 @@ class AutomaticCar: Car {
         }
     }
 }
-    
-struct CarColor {
-    var red, green, blue: Double
-    init (red: Double, green: Double, blue: Double) {
-        self.red   = red
-        self.green = green
-        self.blue  = blue
-    }
-}
-
-enum PowerSource: CaseIterable {
-    case ICE, MHEV, HEV, REV, BEV, PHEV, FCEV
-}
 
 func VehicleProgram() {
     let vehicle = Vehicle()
     print(vehicle.description)
-    let color = CarColor(red: 1.0, green: 0.0, blue: 1.0)
-    let power = PowerSource.BEV
-    let car = Car(color: color, power: power)
+    
+    let carSize = CarSize(length: 5.0, width: 1.9, height: 1.5)
+    let carPower = PowerSource.ICE
+    let car = Car(power: carPower)
+    car.size = carSize
+    car.currentSpeed = 40.0
     print(car.description)
-    let automaticCar = AutomaticCar(color: color, power: power)
+    
+    let automaticCarsize = CarSize(length: 4.0, width: 1.8, height: 1.4)
+    let automaticCarPower = PowerSource.BEV
+    let automaticCar = AutomaticCar(power: carPower)
+    automaticCar.size = automaticCarsize
     automaticCar.currentSpeed = 35.0
     print(automaticCar.description)
 }

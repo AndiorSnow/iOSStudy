@@ -388,23 +388,18 @@ private func ControlFlow() {
 
 // Test 1
 func Plalindrome() {
-    let str = "asdfdsa"
-    if (str == String(str.reversed())) {
+    let str = "asdfds"
+    guard (str != String(str.reversed())) else {
         print("The string is a plalindrome.")
-    } else {
-        print("The string is not a plalindrome.")
+        return
     }
+    print("The string is not a plalindrome.")
 }
 
-//SumFilteredArray()
 func SumFilteredArray() {
-    let someInts = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    var sortedInts = someInts.sorted()
-    sortedInts.removeFirst(1)
-    sortedInts.removeLast(1)
-    let sumFiltered = sortedInts.filter { $0 % 2 != 0 }.reduce(0, +)
+    let someInts = [9, 2, 3, 7, 5, 6, 4, 8, 1]
+    let sumFiltered = someInts.filter{ $0 != someInts.max() }.filter{ $0 != someInts.min() }.filter { $0 % 2 != 0 }.reduce(0, +)
     print (sumFiltered)
 }
-
 
 VehicleProgram()
