@@ -647,29 +647,80 @@ func Deinitialization() {
 // Test 2
 // Create a program based on the characteristics of the vehicle, which requires the application of structures, enumerations, classes, methods, etc
 
-class Vehicle {
-    var currentSpeed = 0.0
-    var wheels = 4
-    var description: String {
-        return "traveling at \(currentSpeed) miles per hour"
+/*
+ class Vehicle {
+     var currentSpeed = 0.0
+     var wheels = 4
+     var description: String {
+         return "traveling at \(currentSpeed) miles per hour"
+     }
+     func getWheels(wheels: Int) {}
+ }
+
+ class Car: Vehicle {
+     var gear = 1
+     var size = CarSize()
+     let power: PowerSource
+     override var description: String {
+         return super.description + " in gear \(gear)"
+         + " with size of length:\(size.length), width:\(size.width), height:\(size.height)"
+         + " and power source of \(power)"
+     }
+     override func getWheels(wheels: Int) {
+         print ("Car has \(wheels) wheels.")
+     }
+     init (power: PowerSource) {
+         self.power = power
+     }
+ }
+     
+ struct CarSize {
+     var length = 0.0
+     var width = 0.0
+     var height = 0.0
+ }
+
+ enum PowerSource: CaseIterable {
+     case ICE, MHEV, HEV, REV, BEV, PHEV, FCEV
+ }
+
+ class AutomaticCar: Car {
+     override var currentSpeed: Double {
+         didSet {
+             gear = Int(currentSpeed / 10.0) + 1
+         }
+     }
+ }
+ */
+
+protocol Vehicle {
+    var currentSpeed : Double { get set }
+    var wheels : Int { get }
+    var gear : Int { get }
+    var power: PowerSource { get }
+    var size: CarSize { get }
+}
+extension Vehicle {
+    func getWheels() -> String{
+        "Car has \(self.wheels) wheels."
     }
-    func getWheels(wheels: Int) {}
+    func description() -> String{
+        return "Car is traveling at \(self.currentSpeed) miles per hour" + " in gear \(self.gear)"
+        + " with size of length:\(self.size.length), width:\(self.size.width), height:\(self.size.height)"
+        + " and power source of \(self.power)."
+    }
 }
 
 class Car: Vehicle {
+    var currentSpeed: Double
+    let wheels : Int
     var gear = 1
-    var size = CarSize()
     let power: PowerSource
-    override var description: String {
-        return super.description + " in gear \(gear)" 
-        + " with size of length:\(size.length), width:\(size.width), height:\(size.height)"
-        + " and power source of \(power)"
-    }
-    override func getWheels(wheels: Int) {
-        print ("Car has \(wheels) wheels.")
-    }
-    init (power: PowerSource) {
+    var size = CarSize()
+    init (power: PowerSource, currentSpeed: Double, wheels: Int) {
         self.power = power
+        self.currentSpeed = currentSpeed
+        self.wheels = wheels
     }
 }
     
@@ -678,7 +729,6 @@ struct CarSize {
     var width = 0.0
     var height = 0.0
 }
-
 
 enum PowerSource: CaseIterable {
     case ICE, MHEV, HEV, REV, BEV, PHEV, FCEV
@@ -693,20 +743,19 @@ class AutomaticCar: Car {
 }
 
 func VehicleProgram() {
-    let vehicle = Vehicle()
-    print(vehicle.description)
-    
+    let wheels = 4
+    let currentSpeed = 20.0
     let carSize = CarSize(length: 5.0, width: 1.9, height: 1.5)
     let carPower = PowerSource.ICE
-    let car = Car(power: carPower)
+    let car = Car(power: carPower, currentSpeed: currentSpeed, wheels: wheels)
     car.size = carSize
     car.currentSpeed = 40.0
-    print(car.description)
+    print(car.description())
     
     let automaticCarsize = CarSize(length: 4.0, width: 1.8, height: 1.4)
     let automaticCarPower = PowerSource.BEV
-    let automaticCar = AutomaticCar(power: carPower)
+    let automaticCar = AutomaticCar(power: automaticCarPower, currentSpeed: currentSpeed, wheels: wheels)
     automaticCar.size = automaticCarsize
     automaticCar.currentSpeed = 35.0
-    print(automaticCar.description)
+    print(automaticCar.getWheels())
 }

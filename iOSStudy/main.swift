@@ -388,8 +388,9 @@ private func ControlFlow() {
 
 // Test 1
 func Plalindrome() {
-    let str = "asdfds"
-    guard (str != String(str.reversed())) else {
+    let str = "asdfdsa"
+//    str == String(str.reversed()) ? print("The string is a plalindrome.") : print("The string is not a plalindrome.")
+    guard str != String(str.reversed()) else {
         print("The string is a plalindrome.")
         return
     }
@@ -402,4 +403,6 @@ func SumFilteredArray() {
     print (sumFiltered)
 }
 
-VehicleProgram()
+calculateArea()
+//accessElement()
+//VehicleProgram()
