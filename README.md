@@ -41,10 +41,3 @@ Create a program based on the characteristics of the vehicle, which requires the
 ### Test3:
 1. Define a protocol called 'Shape' that requires a method for calculating the area. Create two classes 'Circle' and 'Rectangle', implement this protocol separately, and calculate their areas.
 2. Define a generic protocol 'Container' that requires an associated type 'itemType' and two methods: 'addItem (_ item: itemType)' and 'getItem (at index: Int) ->itemType?'. Create a class 'Box', implement this protocol, store any type of element, and be able to add and retrieve elements.
-
-## Week 2: UIKit
-### Day1 
-1. Application Lifecycle
-2. UIViewController
-3. UINavigationController
-4. UITabBarController
