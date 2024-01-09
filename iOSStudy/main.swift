@@ -365,8 +365,8 @@ private func ControlFlow() {
             print(score)
         }
         defer {
-               print("The score is:")
-           }
+            print("The score is:")
+        }
         score += 5
     }
     // Prints "The score is:"

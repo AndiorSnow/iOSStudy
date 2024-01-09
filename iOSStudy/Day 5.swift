@@ -870,7 +870,7 @@ protocol Shape {
 }
 extension Shape {
     func show() -> String{
-        return "\(self.area())"
+        "\(self.area())"
     }
 }
 
