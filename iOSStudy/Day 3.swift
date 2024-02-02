@@ -643,56 +643,6 @@ func Deinitialization() {
 //    }
 }
 
-
-// Test 2
-// Create a program based on the characteristics of the vehicle, which requires the application of structures, enumerations, classes, methods, etc
-
-/*
- class Vehicle {
-     var currentSpeed = 0.0
-     var wheels = 4
-     var description: String {
-         return "traveling at \(currentSpeed) miles per hour"
-     }
-     func getWheels(wheels: Int) {}
- }
-
- class Car: Vehicle {
-     var gear = 1
-     var size = CarSize()
-     let power: PowerSource
-     override var description: String {
-         return super.description + " in gear \(gear)"
-         + " with size of length:\(size.length), width:\(size.width), height:\(size.height)"
-         + " and power source of \(power)"
-     }
-     override func getWheels(wheels: Int) {
-         print ("Car has \(wheels) wheels.")
-     }
-     init (power: PowerSource) {
-         self.power = power
-     }
- }
-     
- struct CarSize {
-     var length = 0.0
-     var width = 0.0
-     var height = 0.0
- }
-
- enum PowerSource: CaseIterable {
-     case ICE, MHEV, HEV, REV, BEV, PHEV, FCEV
- }
-
- class AutomaticCar: Car {
-     override var currentSpeed: Double {
-         didSet {
-             gear = Int(currentSpeed / 10.0) + 1
-         }
-     }
- }
- */
-
 protocol Vehicle {
     var currentSpeed : Double { get set }
     var wheels : Int { get }
